@@ -1,4 +1,4 @@
--- JOIN
+--BASIC-- JOIN
 -- inner join
 SELECT*
 FROM employee_demographics AS dem
