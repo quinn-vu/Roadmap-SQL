@@ -124,29 +124,4 @@ JOIN parks_departments pd
 ;
 
 
--- ROW, RANGE, INTERVAL
-SELECT first_name, salary,
-SUM( salary) OVER (ORDER BY salary ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) as ROLLING_3_ROWS_ROW,
--- BY ROW
-SUM( salary) OVER (ORDER BY salary Range BETWEEN 2000 PRECEDING AND CURRENT ROW) as ROLLING_3_ROWS_RANGE
-FROM employee_salary
-;-- BY VALUE
 
-
--- RANGE INTERVAL
-/* DAY 1: WINDOW FUNCTIONS PRACTICE
-   Note: Using birth_date for a rolling 7-day sum is for syntax practice only.
-   In a real project, this should be applied to 'Transaction_Date' or 'Order_Date'.
-*/
-SELECT 
-    dem.first_name,
-    dem.birth_date, 
-    sal.salary, 
-    SUM(sal.salary) OVER( 
-        ORDER BY dem.birth_date  
-        RANGE BETWEEN INTERVAL 7 DAY PRECEDING AND CURRENT ROW
-    ) AS rolling_7_day_salary
-FROM employee_demographics AS dem
-JOIN employee_salary AS sal 
-    ON dem.employee_id = sal.employee_id
-ORDER BY dem.birth_date;
