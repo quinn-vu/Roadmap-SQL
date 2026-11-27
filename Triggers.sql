@@ -1,5 +1,4 @@
--- Trigger and Events
-
+-- Trigger: Automatically executes when a specific database action happens (INSERT, UPDATE, DELETE).
 
  SELECT *
  FROM employee_demographics;
